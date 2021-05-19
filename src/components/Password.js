@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Textarea from './Textarea';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';
+import './Password.css';
 
 
 class Password extends Component {
@@ -32,7 +35,7 @@ class Password extends Component {
   handleText = (e) => {
     const value = e.target.value;
     // console.log(value)
-    if(value === 'a'){
+    if(value === '!syn@psi.xyz'){
       this.setState({
         password: true,
       })
@@ -43,12 +46,14 @@ render() {
   return (
     <div>
       <div id="active">
-        <h1>Autorization</h1>
-        <input id="pass" type="password" placeholder="wpisz hasło..." onChange={this.handleText}/>
-        <button id="button" onClick={this.access}>Uzyskaj dostęp</button>
+        <h1>Authorization</h1>
+        <input id="pass" type="password" placeholder="enter the password..." onChange={this.handleText}/>
+        <button id="button" onClick={this.access}>Get access</button>
       </div>
       {!this.state.access ? null :
-      <div><p className='correct'>Hasło prawidłowe, zapraszam do zapoznania się z generatorem szyfru :)</p><Textarea />
+      <div><p className='correct'>Success!
+        <FontAwesomeIcon icon={faCheckSquare} />
+        </p><Textarea className="textarea" />
     </div>}
     </div>
   )

@@ -8,7 +8,11 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Cypher code</h1>
+        <header className='background'>
+          <h1 className='title'>
+            <span><a href="#">My Cypher Code</a></span>
+          </h1>
+        </header>
         <Password />
       </div>
     );

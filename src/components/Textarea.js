@@ -1,40 +1,59 @@
 import React, { Component } from 'react';
 import Cypher from './Cypher';
+import './Textarea.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { faLockOpen } from '@fortawesome/free-solid-svg-icons';
 
 
 class Textarea extends Component {
 
     state = {
-      text: '',
+      text: [],
       changeText: false,
+      textCode: false,
     }
 
     code = () => {
       const textarea = document.getElementById('txtarea');
       const value = textarea.value;
-      console.log('wpisana wartosc', value);
-      // console.log('działa code');
+
       if(value !== ''){
       this.setState({
         text: value,
         changeText: true,
+        textCode: true,
       })
     } else {
-      alert('Wpisz coś ziomuś, żeby zakodować')
+      alert('Zaby zakodować, wpisz dowolny ciąg znaków, liter lub cyfr')
       this.setState({
         text: '',
-        changeText: false
+        changeText: false,
+        textCode: false,
       })
     }
     }
 
     uncode = () => {
-      console.log('działa uncode')
+      const textarea = document.getElementById('txtarea');
+      const value = textarea.value;
+
+      if(value !== ''){
+      this.setState({
+        text: value,
+        changeText: true,
+        textCode: false,
+      })
+    } else {
+      alert('Aby odkodować, wklej zaszyfrowany kod')
+      this.setState({
+        text: '',
+        changeText: false,
+      })
+    }
     }
 
     clearArea = () => {
-      const textarea = document.getElementById('txtarea');
-      const value = textarea.value;
         this.setState({
           changeText: false
         })
@@ -44,12 +63,27 @@ class Textarea extends Component {
   render() {
   return (
     <div>
-        <h1>Pole do zakodowania i odkodowania</h1>
-        <textarea onChange={this.clearArea} id="txtarea" /><br />
-        <button onClick={this.code}>Zakoduj</button>
-        <button onClick={this.uncode}>Odkoduj</button>
-        {!this.state.changeText  ? null : <Cypher text={this.state.text} />}
+        <h2 className="title2">Now, I encourage you to see the cipher generator.</h2>
+        <div className="columns">
+          <div className="cypher">
+            <textarea className='textarea' onChange={this.clearArea} id="txtarea" /><br />
+          <div className='buttons'>
+          <button className='btn' onClick={this.code}>
+              <FontAwesomeIcon className="icon" icon={faLock} />
+          </button>
+              <button className ='btn' onClick={this.uncode}>
+              <FontAwesomeIcon className="icon" icon={faLockOpen} />
+            </button>
+          </div>
+          </div>
+          <div className="result">
+            {!this.state.changeText  ? <textarea disabled className="textarea"></textarea> : <Cypher
+              text={this.state.text}
+              textCode={this.state.textCode}
+              />}
+        </div>
     </div>
+  </div>
   );
 }
 }

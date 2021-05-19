@@ -1,0 +1,52 @@
+.columns {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.cypher {
+  display: flex;
+}
+
+.result {
+  display: flex;
+}
+
+.title2 {
+  margin: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.btn {
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  margin: 10px;
+  text-align: center;
+  padding: 1vw 1.8vw;
+  max-width: 5vw;
+  border-radius: 5px;
+  text-transform: uppercase;
+  border: 1px solid black;
+}
+
+.btn:hover {
+  border: 1px solid black;
+  transition: all 0.4s;
+  font-weight: bold;
+  background-color: #78e08f;
+}
+
+.icon {
+  text-align: center;
+  font-size: 20px;
+}
+
+.btn:hover .icon {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  color: white;
+  transition: all 0.4s;
+}

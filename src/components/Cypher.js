@@ -1,37 +1,32 @@
 import React from 'react';
 
-
 const Cypher = (props) => {
 
 const cipherCode = 3;
 
-function encrypt (letter) {
-  const letterCode = letter.charCodeAt(0);
-  console.log('lettercode', letterCode);
-  const codedLetter = String.fromCharCode(letterCode + cipherCode)
-  console.log('codedletter', codedLetter);
-  return codedLetter
-
+function encode (char) {
+  const letterCode = char.charCodeAt(0);
+  const codedChar = String.fromCharCode(letterCode + cipherCode)
+  return codedChar
 }
 
-function decode (letter) {
-  const letterCode = letter.charCodeAt(0);
-  const codedLetter = String.fromCharCode(letterCode - cipherCode)
-  console.log(codedLetter);
-  return codedLetter
+function decode (char) {
+  const letterCode = char.charCodeAt(0);
+  const codedChar = String.fromCharCode(letterCode - cipherCode)
+  return codedChar
 }
 
-const cypherAll = encrypt(props.text);
-console.log('array cypher', cypherAll)
+const cypherText = [...props.text].map(char => encode(char)).join('');
+const unCypherText = [...props.text].map(char => decode(char)).join('');
 
 
 return (
   <div>
-    <h1>Szyfrowanko</h1>
-    <textarea>{cypherAll}</textarea>
+    <textarea className="textarea">
+      {props.textCode ? cypherText : unCypherText }
+    </textarea>
   </div>
 )
 }
-
 
 export default Cypher;
