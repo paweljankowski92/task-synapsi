@@ -26,7 +26,7 @@ class Password extends Component {
       })
       activeDiv.style.display = 'none';
     } else {
-      alert("Nieprawidłowe hasło. Podpowiedź: Producent oprogramowania w Poznaniu")
+      alert("Incorrect password. Tip: Software producer in Poznan")
     }
     input.value = '';
 
@@ -34,11 +34,15 @@ class Password extends Component {
 
   handleText = (e) => {
     const value = e.target.value;
-    // console.log(value)
-    if(value === '!syn@psi.xyz'){
+    const passwordValue = '!syn@psi.xyz';
+    if(value === passwordValue){
       this.setState({
         password: true,
       })
+  } else {
+    this.setState({
+      password: false,
+    })
   }
 }
 
