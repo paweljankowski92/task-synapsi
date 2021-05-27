@@ -5,8 +5,13 @@ import { expect } from 'chai'
 import sinon from 'sinon'
 
 describe('Component Password', () => {
+  it('should render TextArea', () => {
+    const wrapper = shallow(<Password />)
+    expect(wrapper.find('TextArea'));
+  });
   it('should render Authorization', () => {
     const wrapper = shallow(<Password />)
     expect(wrapper.find('h1').first().text()).to.contain('Authorization');
   });
+
 });
