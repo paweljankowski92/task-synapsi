@@ -5,6 +5,10 @@ import { expect } from 'chai'
 import sinon from 'sinon'
 
 describe('Component Textarea', () => {
+  it('should render Component Cypher', () => {
+    const wrapper = shallow(<Textarea />)
+    expect(wrapper.find('Cypher'));
+  });
   it('should render button', () => {
     const wrapper = shallow(<Textarea />)
     expect(wrapper.find('button'));
